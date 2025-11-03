@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Veículos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Gerenciador de Veículos</h1>
+
+  <div class="menu">
+    <button onclick="mostrarLista()">1 - Listar Veículos</button>
+    <button onclick="abrirModal()">2 - Cadastrar Veículo</button>
+  </div>
+
+  <div id="veiculos-container" class="container"></div>
+
+  <!-- Modal de Cadastro -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <form id="form-veiculo">
+        <h2>Cadastrar Novo Veículo</h2>
+        <input type="text" id="marca" placeholder="Marca" required>
+        <input type="text" id="modelo" placeholder="Modelo" required>
+        <input type="text" id="cor" placeholder="Cor" required>
+        <input type="number" id="quilometragem" placeholder="Quilometragem" required>
+        <input type="number" id="ano" placeholder="Ano de Fabricação" required>
+        <input type="number" id="preco" placeholder="Preço" required>
+        <input type="text" id="imagemUrl" placeholder="URL da Imagem">
+        <select id="tipoId" required>
+          <option value="">Carregando tipos...</option>
+        </select>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
