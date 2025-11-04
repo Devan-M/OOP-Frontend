@@ -1,27 +1,75 @@
+/* === Reset básico === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Layout base === */
 body {
   font-family: 'Zalando Sans', sans-serif;
-  font-stretch: semi-expanded; /* ou use: font-stretch: 110%; */
-  padding: 20px;
+  font-stretch: semi-expanded;
   background: #f4f4f4;
+  padding: 20px;
 }
+
+main {
+  margin-top: 80px; /* espaço para o menu fixo */
+}
+
 h1 {
   margin-bottom: 20px;
+  text-align: center;
 }
-.menu button {
-  margin-right: 10px;
+
+/* === Menu horizontal responsivo === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+  z-index: 1000;
 }
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ffdd00;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ffdd00;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: #444;
+}
+
+/* === Container de cards === */
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 20px;
   justify-content: center;
 }
 
-/* Novo estilo de card */
+/* === Estilo dos cards === */
 .article-wrapper {
   width: 250px;
   transition: 0.15s all ease-in-out;
@@ -31,34 +79,40 @@ h1 {
   cursor: pointer;
   background-color: white;
 }
+
 .article-wrapper:hover {
   box-shadow: 10px 10px 0 #4e84ff, 20px 20px 0 #4444bd;
   border-color: #0578c5;
   transform: translate(-20px, -20px);
 }
+
 .article-wrapper:active {
   box-shadow: none;
   transform: translate(0, 0);
 }
+
 .types {
   gap: 10px;
   display: flex;
   flex-wrap: wrap;
 }
+
 .rounded-lg {
   border-radius: 10px;
 }
+
 .article-wrapper:hover .project-hover {
   transform: rotate(-45deg);
   background-color: #a6c2f0;
 }
+
 .project-info {
-  padding-top: 20px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .project-title {
   font-size: 1.2em;
   margin: 0;
@@ -68,11 +122,13 @@ h1 {
   white-space: nowrap;
   color: black;
 }
+
 .flex-pr {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .project-type {
   background: #b2b2fd;
   color: #1a41cd;
@@ -82,6 +138,7 @@ h1 {
   font-size: 12px;
   letter-spacing: -0.6px;
 }
+
 .project-hover {
   border-radius: 50%;
   width: 40px;
@@ -89,6 +146,7 @@ h1 {
   padding: 6px;
   transition: all 0.3s ease;
 }
+
 .container-project {
   width: 100%;
   height: 170px;
@@ -97,7 +155,7 @@ h1 {
   background-position: center;
 }
 
-/* Modal */
+/* === Modal de cadastro === */
 .modal {
   display: none;
   position: fixed;
@@ -108,6 +166,7 @@ h1 {
   height: 100%;
   background-color: rgba(0,0,0,0.5);
 }
+
 .modal-content {
   background-color: #fff;
   margin: 10% auto;
@@ -116,6 +175,7 @@ h1 {
   width: 350px;
   position: relative;
 }
+
 .close {
   position: absolute;
   top: 10px;
@@ -123,6 +183,7 @@ h1 {
   font-size: 24px;
   cursor: pointer;
 }
+
 .modal-content input,
 .modal-content select {
   display: block;
@@ -130,6 +191,202 @@ h1 {
   padding: 8px;
   width: 100%;
 }
+
 .modal-content button {
   padding: 8px 16px;
+}
+
+/* === Menu flutuante FAB === */
+.menu-fab {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+}
+
+.menu-fab input.checkbox {
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+  position: absolute;
+}
+
+.menu-fab .button-menu {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffdd00;
+  border: 2px solid #1e1e1e;
+  color: #1e1e1e;
+  font-size: 30px;
+  font-weight: 700;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 3px 10px rgba(16, 16, 16, 0.5);
+}
+
+.menu-fab .option {
+  position: absolute;
+  background-color: #1e1e1e;
+  border: 2px solid #ffdd00;
+  color: #ffdd00;
+  z-index: -1;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 3px 3px 10px rgba(16, 16, 16, 0.5);
+}
+
+.menu-fab .checkbox:hover ~ .button-menu,
+.menu-fab .checkbox:checked ~ .button-menu {
+  background-color: #eccd00;
+  scale: 0.98;
+  box-shadow: none;
+}
+
+.menu-fab .checkbox:not(:checked) ~ .button-menu::before {
+  content: "+";
+}
+
+.menu-fab .checkbox:checked ~ .button-menu::after {
+  content: "-";
+  scale: 0.98;
+  box-shadow: none;
+}
+
+.menu-fab .checkbox:not(:checked) ~ .option {
+  box-shadow: none;
+}
+
+.menu-fab .option:hover,
+.menu-fab .option:active,
+.menu-fab .option:focus {
+  box-shadow: none;
+  scale: 0.98;
+}
+
+.menu-fab .checkbox:checked ~ .option-a {
+  transition-delay: 0.1s;
+  transform: translateY(-90px);
+}
+
+.menu-fab .checkbox:checked ~ .option-b {
+  transition-delay: 0.2s;
+  transform: translateY(-65px) translateX(65px);
+}
+
+.menu-fab .checkbox:checked ~ .option-c {
+  transition-delay: 0.3s;
+  transform: translateX(90px);
+}
+
+/* === Mega Menu === */
+.mega-menu {
+  box-shadow: 10px 10px 0 #4e84ff, 20px 20px 0 #4444bd;
+  border-color: #0578c5;
+  background-color: #fff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000000;
+  flex: 1;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000000;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu li a {
+  color: #000000;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  font-weight: 600;
+}
+
+.menu li:hover > .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1001;
+}
+
+.dropdown li a {
+  padding: 10px;
+  color: #000000;
+}
+
+.dropdown li a:hover {
+  background-color: #444;
+}
+
+/* === Responsivo === */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    background-color: #1e1e1e;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+  }
 }

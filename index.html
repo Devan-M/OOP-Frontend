@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
-  <title>Veículos</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Gerenciador de Veículos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:wdth@100..125&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Gerenciador de Veículos</h1>
 
-  <div class="menu">
-    <button onclick="mostrarLista()">1 - Listar Veículos</button>
-    <button onclick="abrirModal()">2 - Cadastrar Veículo</button>
-  </div>
+  <!-- Menu horizontal responsivo -->
+  <header>
+    <nav class="mega-menu">
+      <div class="logo">Veículos</div>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu">
+        <li><a href="#">Dashboard</a></li>
+        <li>
+          <a href="#">Veículos</a>
+          <ul class="dropdown">
+            <li><a href="#" onclick="mostrarLista()">Listar</a></li>
+            <li><a href="#" onclick="abrirModal()">Cadastrar</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Relatórios</a></li>
+        <li><a href="#">Configurações</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div id="veiculos-container" class="container"></div>
+  <main>
+    <h1>Gerenciador de Veículos</h1>
+
+    <!-- Botões flutuantes -->
+    <div class="menu-fab">
+      <input class="checkbox" type="checkbox" />
+      <span class="button-menu"></span>
+      <button class="option-a option" onclick="mostrarLista()">📋</button>
+      <button class="option-b option" onclick="abrirModal()">➕</button>
+      <button class="option-c option" onclick="alert('Opção futura')">⚙️</button>
+    </div>
+
+    <!-- Lista de veículos -->
+    <div id="veiculos-container" class="container"></div>
+  </main>
 
   <!-- Modal de Cadastro -->
   <div id="modal" class="modal">
@@ -39,4 +71,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
