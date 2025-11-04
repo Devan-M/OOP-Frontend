@@ -9,7 +9,7 @@
 body {
   font-family: 'Zalando Sans', sans-serif;
   font-stretch: semi-expanded;
-  background: #f4f4f4;
+  background: #f3f2f2;
   padding: 20px;
 }
 
@@ -23,7 +23,7 @@ h1 {
 }
 
 /* === Menu horizontal responsivo === */
-.navbar {
+/*.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -58,8 +58,9 @@ h1 {
 }
 
 .nav-links li a:hover {
-  background-color: #444;
+  background-color: #444444;
 }
+*/
 
 /* === Container de cards === */
 .container {
@@ -242,6 +243,7 @@ h1 {
 
 .menu li a {
   color: #000000;
+  box-shadow: 5px 5px 0 #4e84ff, 5px 5px 0 #4444bd;
   text-decoration: none;
   padding: 8px 12px;
   display: block;
@@ -269,7 +271,8 @@ h1 {
 }
 
 .dropdown li a:hover {
-  background-color: #444;
+  background-color: #4e84ff;
+  color: #fff;
 }
 
 /* === Responsivo === */
