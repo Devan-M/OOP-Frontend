@@ -33,26 +33,28 @@ function criarCard(veiculo) {
     ? veiculo.imagemUrl
     : IMAGEM_PADRAO;
 
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <img src="${imagem}" alt="Imagem do veículo">
-    <div class="card__content">
-      <p class="card__title">${veiculo.marca} - ${veiculo.modelo}</p>
-      <p class="card__description">
-        Cor: ${veiculo.cor}<br>
-        Quilometragem: ${veiculo.quilometragem} km<br>
-        Ano: ${veiculo.anoFabricacao}<br>
-        Preço: ${precoFormatado}<br>
-        Tipo: ${veiculo.tipo?.nome || 'N/A'}
-      </p>
-      <div class="card__actions">
-        <button class="edit-btn" onclick="editarVeiculo(${veiculo.id})">Editar</button>
-        <button class="delete-btn" onclick="deletarVeiculo(${veiculo.id})">Deletar</button>
+  const article = document.createElement('article');
+  article.className = 'article-wrapper';
+  article.innerHTML = `
+    <div class="rounded-lg container-project" style="background-image: url('${imagem}');"></div>
+    <div class="project-info">
+      <div class="flex-pr">
+        <div class="project-title text-nowrap">${veiculo.marca} - ${veiculo.modelo}</div>
+        <div class="project-hover" onclick="editarVeiculo(${veiculo.id})">
+          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><line y2="12" x2="19" y1="12" x1="5"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </div>
+      <div class="types">
+        <span class="project-type">Cor: ${veiculo.cor}</span>
+        <span class="project-type">Ano: ${veiculo.anoFabricacao}</span>
+        <span class="project-type">KM: ${veiculo.quilometragem}</span>
+        <span class="project-type">Preço: ${precoFormatado}</span>
+        <span class="project-type">Tipo: ${veiculo.tipo?.nome || 'N/A'}</span>
+        <span class="project-type" style="background-color:#f44336; color:white; cursor:pointer;" onclick="deletarVeiculo(${veiculo.id})">Deletar</span>
       </div>
     </div>
   `;
-  return card;
+  return article;
 }
 
 function editarVeiculo(id) {
