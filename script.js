@@ -271,5 +271,86 @@ const imagensPorTipo = {
   híbrido: 'https://www.neocharge.com.br/media/wysiwyg/caoa-chery-hybrid.jpg',
 };
 
+function mostrarBuscaPorMarca() {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('veiculos-container').style.display = 'none';
+  document.getElementById('filtros').style.display = 'none';
+  document.getElementById('busca-por-tipo').style.display = 'none';
+  document.getElementById('busca-por-marca').style.display = 'block';
+  document.getElementById('resultado-marca').innerHTML = '';
+  carregarBotoesMarcas();
+}
+
+function buscarPorMarca() {
+  const marca = document.getElementById('marcaBusca').value.trim().toLowerCase();
+  if (!marca) {
+    alert('Digite uma marca para buscar.');
+    return;
+  }
+
+  fetch(API_VEICULOS)
+    .then(res => res.json())
+    .then(data => {
+      const filtrados = data.filter(v => v.marca?.toLowerCase().includes(marca));
+      const container = document.getElementById('resultado-marca');
+      container.innerHTML = '';
+      if (filtrados.length === 0) {
+        container.innerHTML = '<p>Nenhum veículo encontrado para esta marca.</p>';
+      } else {
+        filtrados.forEach(v => container.appendChild(criarCard(v)));
+      }
+    })
+    .catch(err => {
+      console.error('Erro ao buscar veículos por marca:', err);
+      alert('Erro ao buscar veículos. Tente novamente.');
+    });
+}
+
+function carregarBotoesMarcas() {
+  fetch(API_VEICULOS)
+    .then(res => res.json())
+    .then(data => {
+      const marcasUnicas = [...new Set(data.map(v => v.marca?.trim()).filter(Boolean))];
+      const container = document.getElementById('botoes-marcas');
+      container.innerHTML = '';
+      marcasUnicas.forEach(marca => {
+        const marcaKey = marca.toLowerCase().replace(/\s+/g, '');
+        const logoPath = `logos/${marcaKey}.svg`;
+
+        const button = document.createElement('div');
+        button.className = 'card-tipo';
+        button.style.backgroundImage = `url('${logoPath}')`;
+        button.onclick = () => buscarVeiculosPorMarca(marca);
+
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay-tipo';
+        overlay.textContent = marca;
+
+        button.appendChild(overlay);
+        container.appendChild(button);
+      });
+    })
+    .catch(err => console.error('Erro ao carregar marcas:', err));
+}
+
+function buscarVeiculosPorMarca(marcaSelecionada) {
+  fetch(API_VEICULOS)
+    .then(res => res.json())
+    .then(data => {
+      const filtrados = data.filter(v => v.marca?.toLowerCase() === marcaSelecionada.toLowerCase());
+      const container = document.getElementById('resultado-marca');
+      container.innerHTML = '';
+      if (filtrados.length === 0) {
+        container.innerHTML = '<p>Nenhum veículo encontrado para esta marca.</p>';
+      } else {
+        filtrados.forEach(v => container.appendChild(criarCard(v)));
+      }
+    })
+    .catch(err => {
+      console.error('Erro ao buscar veículos por marca:', err);
+      alert('Erro ao buscar veículos. Tente novamente.');
+    });
+}
+
 // Inicializa com a página inicial
 mostrarHome();
