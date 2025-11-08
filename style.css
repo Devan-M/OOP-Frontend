@@ -210,6 +210,8 @@ h1 {
   display: flex;
   align-items: center;
   padding: 10px 20px;
+  margin-right: 5rem;
+  margin-right: 5rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -339,6 +341,28 @@ h1 {
 
 .card-tipo:hover .overlay-tipo {
   opacity: 1;
+}
+
+.logo-marca {
+  width: 80px; /* ajuste aqui para testar */
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.card-tipo:hover .logo-marca {
+  transform: scale(0.9);
+}
+
+
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 /* === Responsivo === */

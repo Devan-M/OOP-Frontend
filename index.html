@@ -20,7 +20,7 @@
         <li><a href="#" onclick="mostrarHome()">Página Inicial</a></li>
 
         <li>
-          <a href="#">Buscar Veículos</a>
+          <a href="#">Veículos</a>
           <ul class="dropdown">
             <li><a href="#" onclick="mostrarLista()">Listar Todos</a></li>
             <li><a href="#" onclick="mostrarBuscaPorTipo()">Buscar por Tipo</a></li>
@@ -55,12 +55,26 @@
       <div id="resultado-marca" class="container"></div>
     </div>
 
+    <!-- Página de filtro de Km min e máx -->
     <div id="filtros" style="display: none;">
-      <h2>Filtrar Veículos</h2>
-      <input type="text" id="filtroTipo" placeholder="Tipo de veículo">
-      <input type="text" id="filtroStatus" placeholder="Status">
-      <input type="number" id="filtroKm" placeholder="Quilometragem máxima">
+      <h2>Filtrar Veículos por kM:</h2>
+      <input type="number" id="filtroKmMin" placeholder="De:" min="0" max="2000000000">
+      <input type="number" id="filtroKmMax" placeholder="Até:" min="0" max="2000000000">
       <button onclick="filtrarVeiculos()">Buscar</button>
+      <div id="resultado-km" class="container" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Página de filtro por status com botões -->
+    <div id="filtro-status" style="display: none;">
+      <h2>Buscar Veículos por Status</h2>
+      <div class="status-buttons" style="margin-bottom: 20px;">
+        <button onclick="buscarPorStatus('DISPONIVEL')">Disponíveis</button>
+        <button onclick="buscarPorStatus('RESERVADO')">Reservados</button>
+        <button onclick="buscarPorStatus('VENDIDO')">Vendidos</button>
+        <button onclick="buscarPorStatus('TODOS')">Todos</button>
+      </div>
+
+      <div id="resultado-status" class="container" style="margin-top: 20px;"></div>
     </div>
 
     <div id="veiculos-container" class="container" style="display: none;"></div>
@@ -70,7 +84,7 @@
     <div class="modal-content">
       <span class="close" onclick="fecharModal()">&times;</span>
       <form id="form-veiculo">
-        <h2>Cadastrar Novo Veículo</h2>
+        <h2 id="modal-titulo">Cadastrar Novo Veículo</h2>
         <input type="text" id="marca" placeholder="Marca" required>
         <input type="text" id="modelo" placeholder="Modelo" required>
         <input type="text" id="cor" placeholder="Cor" required>
