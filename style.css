@@ -390,3 +390,552 @@ h1 {
     box-shadow: none;
   }
 }
+
+/* From Uiverse.io by gharsh11032000 */ 
+.status-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 0 2px rgb(0, 0, 0);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: rgb(0, 0, 0);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #4e84ff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #212121;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #4e84ff;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+/* From Uiverse.io by 0xnihilism */ 
+.brutalist-container {
+  position: relative;
+  width: 250px;
+  font-family: monospace;
+}
+
+.brutalist-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 4px solid #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 5px 5px 0 #000, 10px 10px 0 #4a90e2;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.brutalist-input:focus {
+  animation: focus-pulse 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite,
+    glitch 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.brutalist-input:focus::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: white;
+  z-index: -1;
+}
+
+.brutalist-input:focus::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -2;
+  clip-path: inset(0 100% 0 0);
+  animation: glitch-slice 4s steps(2, end) infinite;
+}
+
+@keyframes glitch-slice {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  10% {
+    clip-path: inset(0 5% 0 0);
+  }
+  20% {
+    clip-path: inset(0 80% 0 0);
+  }
+  30% {
+    clip-path: inset(0 10% 0 0);
+  }
+  40% {
+    clip-path: inset(0 50% 0 0);
+  }
+  50% {
+    clip-path: inset(0 30% 0 0);
+  }
+  60% {
+    clip-path: inset(0 70% 0 0);
+  }
+  70% {
+    clip-path: inset(0 15% 0 0);
+  }
+  80% {
+    clip-path: inset(0 90% 0 0);
+  }
+  90% {
+    clip-path: inset(0 5% 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.brutalist-label {
+  position: absolute;
+  left: -3px;
+  top: -35px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
+  transform: rotate(-1deg);
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.brutalist-input:focus + .brutalist-label {
+  transform: rotate(0deg) scale(1.05);
+  background-color: #4a90e2;
+}
+
+.smooth-type {
+  position: relative;
+  overflow: hidden;
+}
+
+.smooth-type::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.smooth-type:focus::before {
+  opacity: 1;
+  animation: type-gradient 2s linear infinite;
+}
+
+@keyframes type-gradient {
+  0% {
+    background-position: 300px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.brutalist-input::placeholder {
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.brutalist-input:focus::placeholder {
+  color: transparent;
+}
+
+.brutalist-input:focus {
+  animation: focus-pulse 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+@keyframes focus-pulse {
+  0%,
+  100% {
+    border-color: #000;
+  }
+  50% {
+    border-color: #4a90e2;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: flex-start; /* Alinha ao topo */
+  gap: 40px; /* Espaço entre os inputs */
+  flex-wrap: wrap; /* Permite quebra em telas menores */
+  margin-top: 40px;
+}
+
+/* From Uiverse.io by e-coders */ 
+button {
+ appearance: none;
+ background-color: transparent;
+ border: 0.125em solid #1A1A1A;
+ border-radius: 0.9375em;
+ box-sizing: border-box;
+ color: #3B3B3B;
+ cursor: pointer;
+ display: inline-block;
+ font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+ font-size: 16px;
+ font-weight: 600;
+ line-height: normal;
+ margin: 0;
+ min-height: 0.75em;
+ min-width: 0;
+ outline: none;
+ padding: 1em 2.3em;
+ text-align: center;
+ text-decoration: none;
+ transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ will-change: transform;
+}
+
+button:disabled {
+ pointer-events: none;
+}
+
+button:hover {
+ color: #fff;
+ background-color: #1A1A1A;
+ box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ transform: translateY(-2px);
+}
+
+button:active {
+ box-shadow: none;
+ transform: translateY(0);
+}
+
+/* Base dos botões */
+.btn {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px .2px #00000035;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+/* Botões individuais */
+.btn-editar:hover {
+  width: 150px;
+  background-color: #b4f8b4;
+}
+
+.btn-deletar:hover {
+  width: 150px;
+  background-color: #f8b4b4;
+}
+
+/* Texto */
+.paragraph {
+  color: black;
+  opacity: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  left: 15px;
+  transform: translateX(-15px);
+  transition: all .3s ease;
+}
+
+/* Mostra o texto no hover */
+.btn:hover .paragraph {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ícone */
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .3s ease;
+}
+
+/* Ícone preto */
+.icon path {
+  stroke: #000;
+  stroke-width: 2px;
+  transition: all .3s ease;
+}
+
+/* Ícone move levemente pra direita no hover */
+.btn:hover .icon-wrapper {
+  left: calc(100% - 35px); /* antes estava 35px — agora fica mais centralizado */
+  transform: translate(-50%, -50%);
+}
+
+/* Botão Alterar Status - base */
+.btn-status {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px .2px #00000035;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+/* Ao passar o mouse: botão cresce */
+.btn-status:hover {
+  width: 160px;
+  background-color: #e0e0e0;
+}
+
+/* Texto “Alterar Status” */
+.btn-status .paragraph {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 20px;
+  transform: translateX(-85px);
+  transition: all .3s ease;
+}
+
+/* Mostra o texto no hover */
+.btn-status:hover .paragraph {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-15px);
+}
+
+/* Ícone */
+.btn-status .icon-wrapper {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
+}
+
+/* Ícone preto padrão */
+.btn-status .icon path {
+  stroke: none;
+  fill: #000;
+  transition: all .3s ease;
+}
+
+/* Ícone se move pra direita no hover */
+.btn-status:hover .icon-wrapper {
+  left: calc(100% - 15px);
+  transform: translate(-50%, -50%);
+}
+
+/* Mantém o botão expandido enquanto o mouse está sobre o botão OU sobre o menu */
+.btn-status:hover,
+.status-dropdown:hover .btn-status {
+  width: 160px;
+  background-color: #e0e0e0;
+}
+
+/* Mantém o texto visível enquanto o menu estiver aberto */
+.btn-status:hover .paragraph,
+.status-dropdown:hover .btn-status .paragraph {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-15px);
+}
+
+/* Mantém o ícone deslocado enquanto o menu estiver aberto */
+.btn-status:hover .icon-wrapper,
+.status-dropdown:hover .btn-status .icon-wrapper {
+  left: calc(100% - 15px);
+  transform: translate(-50%, -50%);
+}
+
+
+/* Dropdown */
+.status-dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 12px auto;
+  text-align: center;
+}
+
+/* Menu das opções */
+.status-options {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 100%; /* encosta no botão */
+  left: 0;
+  width: 160px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+/* Mostra o menu ao passar o mouse no dropdown OU nas opções */
+.status-dropdown:hover .status-options,
+.status-options:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  top: calc(100% + 1px); /* um pequeno espaço visual */
+}
+
+
+.status-options div {
+  padding: 10px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.status-options div:hover {
+  background-color: #eaeaea;
+}
+

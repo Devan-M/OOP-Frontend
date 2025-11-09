@@ -25,7 +25,10 @@
             <li><a href="#" onclick="mostrarLista()">Listar Todos</a></li>
             <li><a href="#" onclick="mostrarBuscaPorTipo()">Buscar por Tipo</a></li>
             <li><a href="#" onclick="mostrarBuscaPorMarca()">Buscar por Marca</a></li>
+            <li><a href="#" onclick="mostrarBuscaPorModelo()">Buscar por Modelo</a></li>
+            <li><a href="#" onclick="mostrarBuscaPorAno()">Buscar por Ano</a></li>
             <li><a href="#" onclick="mostrarBuscaPorKm()">Buscar por KM</a></li>
+            <li><a href="#" onclick="mostrarBuscaPorPreco()">Buscar por Preço</a></li>
             <li><a href="#" onclick="mostrarBuscaPorStatus()">Buscar por Status</a></li>
             <li><a href="#" onclick="abrirModal()">Cadastrar</a></li>
           </ul>
@@ -41,43 +44,160 @@
       <p>Use o menu acima para navegar entre as funcionalidades.</p>
     </div>
 
-    <!-- Página de busca por tipo com botões -->
+    <!-- Página de busca por tipo -->
     <div id="busca-por-tipo" style="display: none;">
       <h2>Buscar Veículos por Tipo</h2>
       <div id="botoes-tipos" class="container" style="margin-bottom: 20px;"></div>
       <div id="resultado-tipo" class="container"></div>
     </div>
 
-    <!-- Página de busca por marca com botões -->
+    <!-- Página de busca por marca -->
     <div id="busca-por-marca" style="display: none;">
       <h2>Buscar Veículos por Marca</h2>
       <div id="botoes-marcas" class="container" style="margin-bottom: 20px;"></div>
       <div id="resultado-marca" class="container"></div>
     </div>
 
+    <!-- Página de busca por modelo -->
+    <div id="busca-por-modelo" style="display: none;">
+      <h2>Buscar Veículos por Modelo</h2>
+      <div id="botoes-modelos" class="container" style="margin-bottom: 20px;"></div>
+      <div id="resultado-modelo" class="container"></div>
+    </div>
+
+    <!-- Página de filtro de Ano min e máx -->
+    <div id="filtro-ano" style="display: none;">
+      <h2>Filtrar Veículos por Ano:</h2>
+
+      <div class="input-wrapper">
+        <div class="brutalist-container">
+          <input type="number" id="filtroAnoMin" placeholder="De:" min="1900" max="2100"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">Ano Mínimo</label>
+        </div>
+
+        <div class="brutalist-container">
+          <input type="number" id="filtroAnoMax" placeholder="Até:" min="1900" max="2100"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">Ano Máximo</label>
+        </div>
+      </div>
+
+      <div id="resultado-ano" class="container" style="margin-top: 20px;"></div>
+    </div>
+
     <!-- Página de filtro de Km min e máx -->
     <div id="filtros" style="display: none;">
       <h2>Filtrar Veículos por kM:</h2>
-      <input type="number" id="filtroKmMin" placeholder="De:" min="0" max="2000000000">
-      <input type="number" id="filtroKmMax" placeholder="Até:" min="0" max="2000000000">
-      <button onclick="filtrarVeiculos()">Buscar</button>
+
+      <div class="input-wrapper">
+        <div class="brutalist-container">
+          <input type="number" id="filtroKmMin" placeholder="De:" min="0" max="2000000000"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">KM Mínimo</label>
+        </div>
+
+        <div class="brutalist-container">
+          <input type="number" id="filtroKmMax" placeholder="Até:" min="0" max="2000000000"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">KM Máximo</label>
+        </div>
+      </div>
+
       <div id="resultado-km" class="container" style="margin-top: 20px;"></div>
     </div>
 
-    <!-- Página de filtro por status com botões -->
+    <!-- Página de filtro de Preço min e máx -->
+    <div id="filtro-preco" style="display: none;">
+      <h2>Filtrar Veículos por Preço:</h2>
+
+      <div class="input-wrapper">
+        <div class="brutalist-container">
+          <input type="number" id="filtroPrecoMin" placeholder="De:" min="0" max="100000000"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">Preço Mínimo</label>
+        </div>
+
+        <div class="brutalist-container">
+          <input type="number" id="filtroPrecoMax" placeholder="Até:" min="0" max="100000000"
+            class="brutalist-input smooth-type" />
+          <label class="brutalist-label">Preço Máximo</label>
+        </div>
+      </div>
+
+      <div id="resultado-preco" class="container" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Página de filtro por status -->
     <div id="filtro-status" style="display: none;">
       <h2>Buscar Veículos por Status</h2>
       <div class="status-buttons" style="margin-bottom: 20px;">
-        <button onclick="buscarPorStatus('DISPONIVEL')">Disponíveis</button>
-        <button onclick="buscarPorStatus('RESERVADO')">Reservados</button>
-        <button onclick="buscarPorStatus('VENDIDO')">Vendidos</button>
-        <button onclick="buscarPorStatus('TODOS')">Todos</button>
+        <button class="animated-button" onclick="buscarPorStatus('DISPONIVEL')">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">Disponíveis</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+
+        <button class="animated-button" onclick="buscarPorStatus('RESERVADO')">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">Reservados</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+
+        <button class="animated-button" onclick="buscarPorStatus('VENDIDO')">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">Vendidos</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+
+        <button class="animated-button" onclick="buscarPorStatus('TODOS')">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">Todos</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
       </div>
 
       <div id="resultado-status" class="container" style="margin-top: 20px;"></div>
     </div>
 
     <div id="veiculos-container" class="container" style="display: none;"></div>
+
   </main>
 
   <div id="modal" class="modal">
