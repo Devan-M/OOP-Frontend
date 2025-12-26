@@ -37,5 +37,6 @@ Interface web desenvolvida com foco em conceitos de Programação Orientada a Ob
 Este projeto é ideal para quem deseja entender como aplicar conceitos de OOP no desenvolvimento frontend, mesmo em linguagens que não possuem classes nativas como JavaScript tradicional.
 🤝 Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias, correções ou novas funcionalidades.
-📄 Licença
+
+## 📄 Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
